@@ -2,6 +2,9 @@ from fastapi import FastAPI
 
 from api.controller.game_rest_controller import game_routes
 from api.controller.igdb_games_controller import igdb_games_routes
+from db.database import Base, engine
+
+Base.metadata.create_all(engine)
 
 app = FastAPI()
 app.include_router(game_routes, prefix="/api", tags=["Game"])
